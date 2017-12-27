@@ -1,0 +1,16 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .form {
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.3);
+  }
+    .error {
+      transition: height .3s;
+      margin-top: 20px;
+      color: red;
+    }
