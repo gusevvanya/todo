@@ -20,8 +20,7 @@ const App = () => {
         <div>
           <Switch>
             <Route path="/login" component={Login} />
-            <PrivateRoute exact path="/" component={Main} testProp="test" />
-            <Route render={() => 'Page not found'} />
+            <PrivateRoute component={Main} />
           </Switch>
         </div>
       </Router>

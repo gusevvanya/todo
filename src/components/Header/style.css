@@ -1,0 +1,24 @@
+.header {
+  padding: 20px 0;
+  background: #fff;
+}
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+    .profilele {
+      display: flex;
+      align-items: center;
+    }
+      .avatar {
+        margin-right: 15px;
+      }
+      .logout {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+        .logoutIcon {
+          width: 30px;
+        }
