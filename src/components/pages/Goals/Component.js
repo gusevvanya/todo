@@ -1,29 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import {Card, CardActions, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import GoalCard from 'src/components/GoalCard';
 
 import styles from './styles.css';
 
-const Goals = ({ goals }) => {
-  const goalsList = goals.map((goal) => {
-    return (
-      <a className={styles.card} href="">
-        <Card>
-          <CardMedia
-            overlay={<CardTitle title={goal.title} subtitle={goal.subtitle} />}
-          >
-            <img src={goal.img} alt="" />
-          </CardMedia>
-        </Card>
-      </a>
-    );
-  });
+class Goals extends Component {
+  componentDidMount() {
 
-  return (
-    <div className={`wrap ${styles.wrap}`}>
-      {goalsList}
-    </div>
-  );
+  }
+
+  render() {
+    const goalsList = this.props.goals.map((goal, index) => (
+      <div
+        className={styles.card}
+        key={index}
+      >
+        <GoalCard
+          className={styles.card}
+          goal={goal}
+        />
+      </div>
+    ));
+
+    return (
+      <div className={`wrap ${styles.wrap}`}>
+        {goalsList}
+      </div>
+    );
+  };
+};
+
+Goals.defaultProps = {
+  goals: [],
+};
+
+Goals.propTypes = {
+  goals: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Goals;

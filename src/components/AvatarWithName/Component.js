@@ -5,7 +5,7 @@ import Avatar from 'material-ui/Avatar';
 
 import defaultAvatarImg from 'src/images/default-avatar.png';
 
-import styles from './style.css';
+import styles from './styles.css';
 
 const AvatarWithName = ({ img = defaultAvatarImg, name, className }) => (
   <div className={`${styles.avatar} ${className}`}>
@@ -19,6 +19,10 @@ const AvatarWithName = ({ img = defaultAvatarImg, name, className }) => (
   </div>
 );
 
+AvatarWithName.defaultProps = {
+  img: '',
+  className: '',
+};
 AvatarWithName.propTypes = {
   name: PropTypes.string.isRequired,
   img: PropTypes.string,

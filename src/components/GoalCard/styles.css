@@ -1,0 +1,11 @@
+.card {
+  display: block;
+  cursor: pointer;
+  overflow: hidden;
+}
+  .img {
+    transition: transform .2s;
+  }
+  .card:hover .img {
+    transform: scale(1.05);
+  }

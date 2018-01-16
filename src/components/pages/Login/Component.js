@@ -16,7 +16,7 @@ class Login extends Component {
     e.preventDefault();
 
     if (this.checkUser(this.state.username, this.state.password)) {
-      this.props.history.push('/');
+      this.props.history.push('/goals');
     } else {
       this.setState({
         isValidateSuccess: false,
