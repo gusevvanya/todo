@@ -1,7 +1,7 @@
 import { ADD_GOALS } from '../constans/';
 
 
-export const addGoals = goals => ({
+export const setGoals = goals => ({
   type: ADD_GOALS,
   goals,
 });
@@ -17,10 +17,34 @@ export const fetchGoals = () => (dispatch) => {
       throw new Error();
     })
     .then((data) => {
-      dispatch(addGoals(data));
+      dispatch(setGoals(data));
     })
     .catch(() => {
-      dispatch(addGoals({}));
-      console.log('Data fetching error!');
+      console.log('Data fetching error!', err);
+    });
+};
+
+export const createNewGoal = (title, subtitle, img) => (dispatch) => {
+  const url = 'https://todo-89408.firebaseio.com/goals.json';
+  const body = JSON.stringify({
+    title,
+    subtitle,
+    img,
+  });
+
+  return fetch(url, { method: 'POST', body })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error();
+    })
+    .then((data) => {
+      console.log(data)
+      dispatch(fetchGoals());
+      console.log(browserHistory);
+    })
+    .catch((err) => {
+      console.log('Data recording error!', err);
     });
 };

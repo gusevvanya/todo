@@ -7,18 +7,22 @@ import styles from './styles.css';
 
 class Goals extends Component {
   componentDidMount() {
-
+    this.props.fetchGoals();
   }
 
   render() {
-    const goalsList = this.props.goals.map((goal, index) => (
+    const { goals } = this.props;
+    const goalsKeys = Object.keys(goals);
+
+    const goalsList = goalsKeys.map(key => (
       <div
         className={styles.card}
-        key={index}
+        key={key}
       >
         <GoalCard
           className={styles.card}
-          goal={goal}
+          goal={goals[key]}
+          goalName={key}
         />
       </div>
     ));
@@ -28,15 +32,11 @@ class Goals extends Component {
         {goalsList}
       </div>
     );
-  };
-};
-
-Goals.defaultProps = {
-  goals: [],
-};
+  }
+}
 
 Goals.propTypes = {
-  goals: PropTypes.arrayOf(PropTypes.object),
+  fetchGoals: PropTypes.func.isRequired,
 };
 
 export default Goals;

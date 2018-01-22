@@ -6,7 +6,7 @@ import { Card, CardMedia, CardTitle } from 'material-ui/Card';
 
 import styles from './styles.css';
 
-const GoalCard = ({ goal }) => {
+const GoalCard = ({ goal, goalName }) => {
   const cutStringLength = (string, maxLength) => {
     let truncatedString = string;
 
@@ -20,7 +20,7 @@ const GoalCard = ({ goal }) => {
 
   return (
     <Link
-      to={`/goal/${goal.id}`}
+      to={`/goal/${goalName}`}
       className={styles.card}
     >
       <Card>
@@ -34,7 +34,8 @@ const GoalCard = ({ goal }) => {
         >
           <img
             className={styles.img}
-            src={goal.img}
+            /* src={goal.img} */
+            src="http://www.material-ui.com/images/nature-600-337.jpg"
             alt=""
           />
         </CardMedia>
@@ -49,6 +50,7 @@ GoalCard.propTypes = {
     subtitle: PropTypes.string,
     img: PropTypes.string,
   }).isRequired,
+  goalName: PropTypes.string.isRequired,
 };
 
 export default GoalCard;

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import SvgIcon from 'material-ui/SvgIcon';
+import { Link } from 'react-router-dom'
 
 import AvatarWithName from 'src/components/AvatarWithName';
 
@@ -11,6 +10,10 @@ import styles from './style.css';
 const Header = () => (
   <div className={styles.header}>
     <div className={`${styles.wrap} wrap`}>
+      <div className={styles.nav}>
+        <Link to="/goals" className={styles.link}>Goals list</Link>
+        <Link to="/addgoal" className={styles.link}>Add new goal +</Link>
+      </div>
       <div className={styles.profilele}>
         <AvatarWithName
           className={styles.avatar}

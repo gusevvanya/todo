@@ -1,34 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles.css';
 
-const Goalard = ({ goal: { title, subtitle, img }, match }) => {
-  return (
-    <div className={`wrap ${styles.wrap}`}>
-      <h1 className={styles.title} >
-        {title} - {match.params.id}
-      </h1>
-      <img
-        className={styles.img}
-        src={img} 
-        alt=""
-      />
-      <p
-        className={styles.text}
-      >
-        {subtitle}
-      </p>
-    </div>
-  );
+class GoalItem extends Component {
+  componentDidMount() {
+    /* if() {
+      this.props.history.push('/404')
+    } */
+    this.props.fetchGoals();
+  }
+
+  render() {
+    const goal = this.props.goals[this.props.match.params.id];
+
+    return (
+      <div>
+        {goal &&
+          <div className={`wrap ${styles.wrap}`}>
+            <h1 className={styles.title} >
+              {goal.title}
+            </h1>
+            <img
+              className={styles.img}
+              src={goal.img} 
+              alt=""
+            />
+            <p
+              className={styles.text}
+            >
+              {goal.subtitle}
+            </p>
+          </div>
+        }
+        {!goal && 'Goal not found'}
+      </div>
+    );
+  }
+}
+
+GoalItem.propTypes = {
+  fetchGoals: PropTypes.func.isRequired,
+  goals: PropTypes.objectOf(PropTypes.object.isRequired).isRequired,
 };
 
-Goalard.propTypes = {
-  goal: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
-export default Goalard;
+export default GoalItem;
